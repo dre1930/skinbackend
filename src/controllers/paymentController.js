@@ -13,7 +13,7 @@ export const processPayment = async (req, res) => {
         email,
         metadata: { orderId },
         amount: total * 100, // in kobo
-        callback_url: "http://localhost:5173/payment-status", 
+        callback_url: `${process.env.FRONTEND_URL}/payment-status`, 
 
       },
       {
