@@ -28,7 +28,8 @@ export const createProduct = async (req, res) => {
     const { name, description, price, stock, category } = req.body;
 
     const imageUrl = req.file 
-    ? `/uploads/${req.file.filename}` : req.body.image;
+    ? `/uploads/${req.file.filename}` 
+    : req.body.image || "/uploads/default.png";
     const product = new Product({ 
       name, 
       description, 
