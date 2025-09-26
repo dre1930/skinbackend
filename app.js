@@ -34,6 +34,12 @@ app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.use(express.static(path.join(__dirname, "dist")));
+app.use ((req, res, next) => {
+  if (req.header("x-forwarded-proto") !== "https") {
+    res.redirect(`https://${req.header("host")}${req.url}`);
+  }
+  next();
+});
 
 
 
