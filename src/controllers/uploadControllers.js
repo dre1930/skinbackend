@@ -5,7 +5,7 @@ export const uploadImage = (req, res) => {
   }
 
   // Construct URL to access the uploaded file
-  const url = `https://${req.get('host')}/uploads/${req.file.filename}`;
+  const url = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
 
   res.json({ url });
 };
