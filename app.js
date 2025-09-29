@@ -4,7 +4,7 @@ import { config } from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-
+import fs from "fs";
 import authRoutes from "./src/routes/authRoutes.js";
 import cartRoutes from "./src/routes/cartRoutes.js";
 //import checkoutRoutes from "./src/routes/checkoutRoutes.js";
@@ -41,12 +41,7 @@ app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.use(express.static(path.join(__dirname, "dist")));
-/*app.use ((req, res, next) => {
-  if (req.header("x-forwarded-proto") !== "https") {
-    res.redirect(`https://${req.header("host")}${req.url}`);
-  }
-  next();
-});*/
+ 
 
 
 
