@@ -28,7 +28,7 @@ export const createProduct = async (req, res) => {
     const { name, description, price, stock, category } = req.body;
 
     const imageUrl = req.file 
-    ? `https://skinbackend-ew51.onrender.com/uploads/${req.file.filename}` : req.body.image;
+    ? `/uploads/${req.file.filename}` : req.body.image;
     const product = new Product({ 
       name, 
       description, 
