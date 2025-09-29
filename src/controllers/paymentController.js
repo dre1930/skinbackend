@@ -13,7 +13,7 @@ export const processPayment = async (req, res) => {
         email,
         metadata: { orderId },
         amount: total * 100, // in kobo
-        callback_url: `${process.env.FRONTEND_URL}/payment-status`, 
+        callback_url: "https://skinbackend-ew51.onrender.com/payment-status", 
 
       },
       {
