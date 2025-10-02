@@ -54,8 +54,14 @@ app.use(express.static(path.join(__dirname, "dist")));
 
 
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname,"dist","index.html"));
-}); 
+app.use((req, res, next) => {
+  if (req.originalUrl.startsWith("/api")) {
+    return res.status(404).json({ message: "API route not found" });
+  }
+
+  // serve React app for all non-API routes
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 
 export default app;
