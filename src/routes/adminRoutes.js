@@ -3,11 +3,13 @@ import { protect } from "../middleware/authMiddleware.js";
 import Order from "../models/Order.js";
 import { createProduct, deleteProduct } from "../controllers/productController.js";
 
+
+const router = express.Router();
+
+
 router.post("/products", authTokenMiddleware, isAdmin, createProduct);
 router.delete("/products/:id", authTokenMiddleware, isAdmin, deleteProduct);
 
-
-const router = express.Router();
 
 // GET all orders (Admin only)
 router.get("/orders", protect, isAdmin, async (req, res) => {
